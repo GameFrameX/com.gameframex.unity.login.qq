@@ -9,6 +9,7 @@ using cn.sharesdk.unity3d;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.ShareSdk.Runtime;
+using UnityEngine.Device;
 
 namespace GameFrameX.Login.QQ.Runtime
 {
@@ -82,6 +83,10 @@ namespace GameFrameX.Login.QQ.Runtime
         {
             _loginSuccess = loginSuccess;
             _loginFail = loginFail;
+#if UNITY_EDITOR
+            _loginSuccess?.Invoke(new QQLoginSuccess() { NickName = "test", OpenId = SystemInfo.deviceUniqueIdentifier, PhotoUrl = "test", UnionId = SystemInfo.deviceUniqueIdentifier });
+            return;
+#endif
             _shareSDK.Authorize(PlatformType.QQ);
         }
 
