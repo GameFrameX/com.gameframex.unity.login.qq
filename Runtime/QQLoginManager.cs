@@ -49,6 +49,8 @@ namespace GameFrameX.Login.QQ.Runtime
         private EventComponent _eventComponent;
         private ShareSDK _shareSDK;
 
+        private bool isInit = false;
+
         /// <summary>
         /// 初始化 QQ 登录组件。
         /// </summary>
@@ -57,11 +59,17 @@ namespace GameFrameX.Login.QQ.Runtime
         [UnityEngine.Scripting.Preserve]
         public void Init(string appId, string appKey)
         {
+            if (isInit)
+            {
+                return;
+            }
+
             _eventComponent = GameEntry.GetComponent<EventComponent>();
             _eventComponent.CheckSubscribe(AuthEventArgs.EventId, OnAuthEventArgs);
             _shareSDK = UnityEngine.Object.FindObjectOfType<ShareSDK>();
             _shareSDK.devInfo.qq.AppId = appId;
             _shareSDK.devInfo.qq.AppKey = appKey;
+            isInit = true;
         }
 
         private void OnAuthEventArgs(object sender, GameEventArgs e)

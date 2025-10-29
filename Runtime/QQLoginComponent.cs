@@ -31,6 +31,7 @@
 
 using System;
 using GameFrameX.Runtime;
+using GameFrameX.ShareSdk.Runtime;
 using UnityEngine;
 
 namespace GameFrameX.Login.QQ.Runtime
@@ -42,7 +43,7 @@ namespace GameFrameX.Login.QQ.Runtime
     [AddComponentMenu("Game Framework/QQLogin")]
     [UnityEngine.Scripting.Preserve]
     [RequireComponent(typeof(GameFrameXQQLoginCroppingHelper))]
-    public class QQLoginComponent : GameFrameworkComponent
+    public class QQLoginComponent : GameFrameworkComponent, IMopShareSDKHandler
     {
         private IQQLoginManager _QQLoginManager = null;
 
@@ -68,7 +69,7 @@ namespace GameFrameX.Login.QQ.Runtime
             _QQLoginManager = GameFrameworkEntry.GetModule<IQQLoginManager>();
             if (_QQLoginManager == null)
             {
-                Log.Fatal("Red system manager is invalid.");
+                Log.Fatal("qq login manager is invalid.");
                 return;
             }
         }
