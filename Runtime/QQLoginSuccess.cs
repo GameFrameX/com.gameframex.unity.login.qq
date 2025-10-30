@@ -38,7 +38,7 @@ namespace GameFrameX.Login.QQ.Runtime
     public sealed class QQLoginSuccess
     {
         /// <summary>
-        /// UserID
+        /// UserID,用户唯一ID，不会为空
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public string UserId { get; set; }
@@ -50,19 +50,19 @@ namespace GameFrameX.Login.QQ.Runtime
         public string Token { get; set; }
 
         /// <summary>
-        /// NickName
+        /// NickName，不会为空
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public string NickName { get; set; }
 
         /// <summary>
-        /// openid
+        /// openid,可能为空
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public string OpenId { get; set; }
 
         /// <summary>
-        /// UnionId
+        /// UnionId，可能为空
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public string UnionId { get; set; }
