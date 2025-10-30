@@ -139,6 +139,8 @@ namespace GameFrameX.Login.QQ.Runtime
             return;
 #endif
             _shareSDK.Authorize(PlatformType.QQ);
+            var authInfo = _shareSDK.GetAuthInfo(PlatformType.QQ);
+            Log.Debug(authInfo);
         }
 
         /// <summary>
