@@ -89,6 +89,9 @@ namespace GameFrameX.Login.QQ.Runtime
                     }
 
                     var qqLoginSuccess = new QQLoginSuccess();
+
+                    var authInfo = _shareSDK.GetAuthInfo(PlatformType.QQ);
+                    Log.Debug(authInfo);
                     if (eventArgs.Data != null)
                     {
                         if (eventArgs.Data.ContainsKey("nickname"))
