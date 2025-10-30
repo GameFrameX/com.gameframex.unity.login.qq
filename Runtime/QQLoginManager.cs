@@ -159,7 +159,7 @@ namespace GameFrameX.Login.QQ.Runtime
             _loginSuccess = loginSuccess;
             _loginFail = loginFail;
 #if UNITY_EDITOR
-            _loginSuccess?.Invoke(new QQLoginSuccess() { NickName = "test", OpenId = SystemInfo.deviceUniqueIdentifier, PhotoUrl = "test", UnionId = SystemInfo.deviceUniqueIdentifier });
+            _loginSuccess?.Invoke(new QQLoginSuccess() { NickName = "test", OpenId = SystemInfo.deviceUniqueIdentifier, UserId = SystemInfo.deviceUniqueIdentifier, Token = "test", PhotoUrl = "test", UnionId = SystemInfo.deviceUniqueIdentifier, UserGender = "m" });
             // return;
 #endif
             if (_shareSDK.IsAuthorized(PlatformType.QQ))
