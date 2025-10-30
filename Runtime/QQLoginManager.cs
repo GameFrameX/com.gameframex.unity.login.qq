@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using System.Collections;
 using cn.sharesdk.unity3d;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
@@ -88,40 +89,60 @@ namespace GameFrameX.Login.QQ.Runtime
                         return;
                     }
 
-                    var qqLoginSuccess = new QQLoginSuccess();
 
-                    var authInfo = _shareSDK.GetAuthInfo(PlatformType.QQ);
-                    Log.Debug(authInfo);
-                    if (eventArgs.Data != null)
-                    {
-                        if (eventArgs.Data.ContainsKey("nickname"))
-                        {
-                            qqLoginSuccess.NickName = eventArgs.Data["nickname"].ToString();
-                        }
-
-                        if (eventArgs.Data.ContainsKey("openid"))
-                        {
-                            qqLoginSuccess.OpenId = eventArgs.Data["openid"].ToString();
-                        }
-
-                        if (eventArgs.Data.ContainsKey("unionid"))
-                        {
-                            qqLoginSuccess.UnionId = eventArgs.Data["unionid"].ToString();
-                        }
-
-                        if (eventArgs.Data.ContainsKey("figureurl"))
-                        {
-                            qqLoginSuccess.PhotoUrl = eventArgs.Data["figureurl"].ToString();
-                        }
-                    }
-
-                    _loginSuccess.Invoke(qqLoginSuccess);
+                    Success();
                 }
                 else
                 {
                     _loginFail?.Invoke((int)eventArgs.State);
                 }
             }
+        }
+
+        private void Success()
+        {
+            var authInfo = _shareSDK.GetAuthInfo(PlatformType.QQ);
+            Log.Debug(authInfo);
+            var qqLoginSuccess = new QQLoginSuccess();
+            if (authInfo != null)
+            {
+                if (authInfo.ContainsKey("userName"))
+                {
+                    qqLoginSuccess.NickName = authInfo["userName"].ToString();
+                }
+
+                if (authInfo.ContainsKey("openID"))
+                {
+                    qqLoginSuccess.OpenId = authInfo["openID"].ToString();
+                }
+
+                if (authInfo.ContainsKey("unionID"))
+                {
+                    qqLoginSuccess.UnionId = authInfo["unionID"].ToString();
+                }
+
+                if (authInfo.ContainsKey("userIcon"))
+                {
+                    qqLoginSuccess.PhotoUrl = authInfo["userIcon"].ToString();
+                }
+
+                if (authInfo.ContainsKey("userID"))
+                {
+                    qqLoginSuccess.UserId = authInfo["userID"].ToString();
+                }
+
+                if (authInfo.ContainsKey("token"))
+                {
+                    qqLoginSuccess.Token = authInfo["token"].ToString();
+                }
+
+                if (authInfo.ContainsKey("userGender"))
+                {
+                    qqLoginSuccess.UserGender = authInfo["userGender"].ToString();
+                }
+            }
+
+            _loginSuccess?.Invoke(qqLoginSuccess);
         }
 
         private Action<QQLoginSuccess> _loginSuccess;
@@ -139,11 +160,15 @@ namespace GameFrameX.Login.QQ.Runtime
             _loginFail = loginFail;
 #if UNITY_EDITOR
             _loginSuccess?.Invoke(new QQLoginSuccess() { NickName = "test", OpenId = SystemInfo.deviceUniqueIdentifier, PhotoUrl = "test", UnionId = SystemInfo.deviceUniqueIdentifier });
-            return;
+            // return;
 #endif
+            if (_shareSDK.IsAuthorized(PlatformType.QQ))
+            {
+                Success();
+                return;
+            }
+
             _shareSDK.Authorize(PlatformType.QQ);
-            var authInfo = _shareSDK.GetAuthInfo(PlatformType.QQ);
-            Log.Debug(authInfo);
         }
 
         /// <summary>

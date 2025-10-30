@@ -38,6 +38,18 @@ namespace GameFrameX.Login.QQ.Runtime
     public sealed class QQLoginSuccess
     {
         /// <summary>
+        /// UserID
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// Token
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public string Token { get; set; }
+
+        /// <summary>
         /// NickName
         /// </summary>
         [UnityEngine.Scripting.Preserve]
@@ -56,6 +68,12 @@ namespace GameFrameX.Login.QQ.Runtime
         public string UnionId { get; set; }
 
         /// <summary>
+        /// userGender
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public string UserGender { get; set; }
+
+        /// <summary>
         /// PhotoUrl
         /// </summary>
         [UnityEngine.Scripting.Preserve]
@@ -63,7 +81,7 @@ namespace GameFrameX.Login.QQ.Runtime
 
         public override string ToString()
         {
-            return $"NickName：{NickName} UnionId：{UnionId} OpenId：{OpenId} PhotoUrl：{PhotoUrl}";
+            return $"NickName：{NickName} UnionId：{UnionId} OpenId：{OpenId} UserGender：{UserGender} UserId：{UserId} Token：{Token} PhotoUrl：{PhotoUrl}";
         }
     }
 }
