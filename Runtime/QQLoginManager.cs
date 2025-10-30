@@ -83,32 +83,40 @@ namespace GameFrameX.Login.QQ.Runtime
 
                 if (eventArgs.State == ResponseState.Success)
                 {
+                    if (_loginSuccess == null)
+                    {
+                        return;
+                    }
+
                     var qqLoginSuccess = new QQLoginSuccess();
-                    if (eventArgs.Data.ContainsKey("nickname"))
+                    if (eventArgs.Data != null)
                     {
-                        qqLoginSuccess.NickName = eventArgs.Data["nickname"].ToString();
-                    }
+                        if (eventArgs.Data.ContainsKey("nickname"))
+                        {
+                            qqLoginSuccess.NickName = eventArgs.Data["nickname"].ToString();
+                        }
 
-                    if (eventArgs.Data.ContainsKey("openid"))
-                    {
-                        qqLoginSuccess.OpenId = eventArgs.Data["openid"].ToString();
-                    }
+                        if (eventArgs.Data.ContainsKey("openid"))
+                        {
+                            qqLoginSuccess.OpenId = eventArgs.Data["openid"].ToString();
+                        }
 
-                    if (eventArgs.Data.ContainsKey("unionid"))
-                    {
-                        qqLoginSuccess.UnionId = eventArgs.Data["unionid"].ToString();
-                    }
+                        if (eventArgs.Data.ContainsKey("unionid"))
+                        {
+                            qqLoginSuccess.UnionId = eventArgs.Data["unionid"].ToString();
+                        }
 
-                    if (eventArgs.Data.ContainsKey("figureurl"))
-                    {
-                        qqLoginSuccess.PhotoUrl = eventArgs.Data["figureurl"].ToString();
+                        if (eventArgs.Data.ContainsKey("figureurl"))
+                        {
+                            qqLoginSuccess.PhotoUrl = eventArgs.Data["figureurl"].ToString();
+                        }
                     }
 
                     _loginSuccess.Invoke(qqLoginSuccess);
                 }
                 else
                 {
-                    _loginFail.Invoke((int)eventArgs.State);
+                    _loginFail?.Invoke((int)eventArgs.State);
                 }
             }
         }
