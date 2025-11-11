@@ -40,7 +40,7 @@ namespace GameFrameX.Login.QQ.Runtime
     /// QQ登录组件。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("Game Framework/QQLogin")]
+    [AddComponentMenu("GameFrameX/QQLogin")]
     [UnityEngine.Scripting.Preserve]
     [RequireComponent(typeof(GameFrameXQQLoginCroppingHelper))]
     public class QQLoginComponent : GameFrameworkComponent, IMopShareSDKHandler
