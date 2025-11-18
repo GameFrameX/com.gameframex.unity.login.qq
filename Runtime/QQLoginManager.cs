@@ -68,8 +68,14 @@ namespace GameFrameX.Login.QQ.Runtime
             _eventComponent = GameEntry.GetComponent<EventComponent>();
             _eventComponent.CheckSubscribe(AuthEventArgs.EventId, OnAuthEventArgs);
             _shareSDK = UnityEngine.Object.FindObjectOfType<ShareSDK>();
+#if UNITY_ANDROID
             _shareSDK.devInfo.qq.AppId = appId;
             _shareSDK.devInfo.qq.AppKey = appKey;
+#endif
+#if UNITY_IOS || UNITY_IPHONE
+            _shareSDK.devInfo.qq.app_id = appId;
+            _shareSDK.devInfo.qq.app_key = appKey;
+#endif
             isInit = true;
         }
 
