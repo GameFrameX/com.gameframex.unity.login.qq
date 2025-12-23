@@ -15,6 +15,23 @@
 * **QQ登录:** 添加获取QQ授权信息的日志输出 ([cf0fd9a](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/cf0fd9a3a1cdc84c5b9dab00cb8771a5e7da532f))
 * **QQ登录:** 添加获取并打印QQ授权信息的调试日志 ([1e46c5f](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/1e46c5fb686ad2aa63dd859902928d5de0c7ea20))
 
+# [1.1.0](https://github.com/gameframex/com.gameframex.unity.login.qq/compare/1.0.1...1.1.0) (2025-12-23)
+
+
+### Bug Fixes
+
+* **QQ登录:** 修复不同平台QQ登录参数设置问题 ([9a24e90](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/9a24e90bf510df6b7872c7cd45853d29e8371895))
+* **QQ登录:** 在编辑器模式下补充QQ登录成功回调的缺失字段 ([90aa24c](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/90aa24ccee4053fbc4c20226dd48294a469deec4))
+* **QQ登录:** 添加初始化标志防止重复初始化并修复日志错误 ([944292f](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/944292f1fa2ea52786d52f51cac6b0a9b72a0139))
+* **QQ登录:** 添加空引用检查并优化数据处理逻辑 ([3051175](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/3051175aa751771f5f7bb4b18eb059b94bea4379))
+
+
+### Features
+
+* **QQ登录:** 添加用户ID、Token和性别字段并优化登录逻辑 ([f12a594](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/f12a5947a210600521807e132fd9b529dfe45e7d))
+* **QQ登录:** 添加获取QQ授权信息的日志输出 ([cf0fd9a](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/cf0fd9a3a1cdc84c5b9dab00cb8771a5e7da532f))
+* **QQ登录:** 添加获取并打印QQ授权信息的调试日志 ([1e46c5f](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/1e46c5fb686ad2aa63dd859902928d5de0c7ea20))
+
 # Changelog
 
 ## [1.0.0](https://github.com/GameFrameX/com.gameframex.unity.login.qq/tree/1.0.0) (2025-10-28)
