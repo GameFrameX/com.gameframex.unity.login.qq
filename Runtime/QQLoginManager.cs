@@ -100,7 +100,7 @@ namespace GameFrameX.Login.QQ.Runtime
                 }
                 else
                 {
-                    _loginFail?.Invoke((int)eventArgs.State);
+                    _loginFail?.Invoke(eventArgs.State.ToString());
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace GameFrameX.Login.QQ.Runtime
         }
 
         private Action<QQLoginSuccess> _loginSuccess;
-        private Action<int> _loginFail;
+        private Action<string> _loginFail;
 
         /// <summary>
         /// 登录 QQ 账号。
@@ -160,7 +160,7 @@ namespace GameFrameX.Login.QQ.Runtime
         /// <param name="loginSuccess">登录成功回调。</param>
         /// <param name="loginFail">登录失败回调。</param>
         [UnityEngine.Scripting.Preserve]
-        public void Login(Action<QQLoginSuccess> loginSuccess, Action<int> loginFail)
+        public void Login(Action<QQLoginSuccess> loginSuccess, Action<string> loginFail)
         {
             _loginSuccess = loginSuccess;
             _loginFail = loginFail;

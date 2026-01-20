@@ -53,7 +53,7 @@ namespace GameFrameX.Login.QQ.Runtime
         /// <param name="loginSuccess">登录成功回调,返回登录信息</param>
         /// <param name="loginFail">登录失败回调,返回错误码</param>
         [UnityEngine.Scripting.Preserve]
-        void Login(Action<QQLoginSuccess> loginSuccess, Action<int> loginFail);
+        void Login(Action<QQLoginSuccess> loginSuccess, Action<string> loginFail);
 
         /// <summary>
         /// 退出QQ账号登录
