@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/gameframex/com.gameframex.unity.login.qq/compare/1.1.0...1.1.1) (2026-01-20)
+
+
+### Bug Fixes
+
+* **QQ登录:** 将登录失败回调参数从int改为string ([73dfc95](https://github.com/gameframex/com.gameframex.unity.login.qq/commit/73dfc957d3a6b54c19c1fda25fd73d43cf37c489))
+
 # [1.1.0](https://github.com/gameframex/com.gameframex.unity.login.qq/compare/1.0.1...1.1.0) (2025-12-23)
 
 
